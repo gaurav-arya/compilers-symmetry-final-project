@@ -605,6 +605,13 @@ SymmetricResultAnalysis::State SymmetricResultAnalysis::localGuaranteed(
     PatternRewriter &rewriter) {
   assert(op);
 
+  if (auto boolAttr = op->getAttrOfType<BoolAttr>(getAttrName())) {
+    if (boolAttr.getValue())
+      return State::GUARANTEED;
+    else
+      return State::NOTGUARANTEED;
+  }
+
   auto outTy = cast<RankedTensorType>(op->getResult(0).getType());
   if (outTy.getRank() != 2)
     return State::NOTGUARANTEED; // this pass only checks for symmetric matrices
