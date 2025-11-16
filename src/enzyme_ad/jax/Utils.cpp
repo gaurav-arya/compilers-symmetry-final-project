@@ -674,6 +674,8 @@ SymmetricResultAnalysis::State SymmetricResultAnalysis::localGuaranteed(
   if (isa<stablehlo::TransposeOp, stablehlo::AddOp, stablehlo::SubtractOp>(op)) {
     // All operands symmetric => symmetric result
     recursiveCheck = true;
+  } else if (isa<mlir::stablehlo::SelectOp>(op)) {
+    // TODO: figure out logic for SelectOp
   }
 
   /**
