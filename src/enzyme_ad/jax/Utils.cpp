@@ -667,6 +667,11 @@ SymmetricResultAnalysis::State SymmetricResultAnalysis::localGuaranteed(
     recursiveCheck = true;
   }
 
+  if (isa<stablehlo::TransposeOp, stablehlo::AddOp, stablehlo::SubtractOp>(op)) {
+    // All operands symmetric => symmetric result
+    recursiveCheck = true;
+  }
+
   /**
    * TODO
    * - check if its * 0 -> symmetric
