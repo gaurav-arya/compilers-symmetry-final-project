@@ -15,7 +15,7 @@ arya:Enzyme-JAX:symmetric-result-analysis
 * Recognizing symmetry annotations in input IR and
 annotating that the result of transposing a symmetric matrix is still symmetric:
 https://github.com/EnzymeAD/Enzyme-JAX/pull/1626
-* Annotating that result of A & A will be symmetric if A is symmetric: https://github.com/EnzymeAD/Enzyme-JAX/commit/
-1659f787d960ef5ae97b20d9afe72d5403921b64
-* Converting column-major reduction on symmetric matrix to row-major:  https://github.
-com/EnzymeAD/Enzyme-JAX/commit/1a2a98a8b10efa18fd6a4c133c06154be430268d
+* Annotating that result of A * A will be symmetric if A is symmetric: https://github.com/EnzymeAD/Enzyme-JAX/commit/1659f787d960ef5ae97b20d9afe72d5403921b64
+* Successful symmetric detection test on StableHLO MLIR using analysis above: https://github.com/EnzymeAD/Enzyme-JAX/blob/173903fe8d8fd9883a01c3d4dacc13779301a3b4/test/lit_tests/structured_tensors/propagate_symmetric.mlir
+* Converting column-major reduction on symmetric matrix to row-major:  https://github.com/EnzymeAD/Enzyme-JAX/commit/1a2a98a8b10efa18fd6a4c133c06154be430268d
+* Successful optimization on StableHLO MLIR using optimization above: https://github.com/EnzymeAD/Enzyme-JAX/blob/1a2a98a8b10efa18fd6a4c133c06154be430268d/test/lit_tests/structured_tensors/dot_general_symmetric.mlir
